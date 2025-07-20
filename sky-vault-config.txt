@@ -1,0 +1,9 @@
+# AWS CLI config for Sky Vault challenge
+# Simulates a configuration for unauthenticated S3 access
+# File: ~/.aws/config (example)
+
+[default]
+region = us-east-1
+output = json
+# Note: No credentials provided, as bucket is public
+s3_bucket = data-backup-2025
