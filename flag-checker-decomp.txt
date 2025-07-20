@@ -1,0 +1,16 @@
+// Ghidra decompilation of main function (Flag Checker challenge)
+// Simplified output showing hardcoded flag
+
+undefined4 main(void) {
+  char local_50 [64];
+  char *flag = "CTF{fl4g_ch3ck3r_br34k}";
+  
+  printf("Enter password: ");
+  scanf("%s",local_50);
+  if (strcmp(local_50, flag) == 0) {
+    printf("Correct!\n");
+  } else {
+    printf("Invalid!\n");
+  }
+  return 0;
+}
