@@ -1,0 +1,11 @@
+# Apache access log for 10.10.10.10 (Ghost Relay challenge)
+# Simulated Nmap scan activity on ports 22, 139, 445
+# Format: [date] "request" status bytes "referrer" "user-agent"
+
+10.0.0.1 - - [15/Jan/2025:10:15:32 +0000] "GET / HTTP/1.1" 404 512 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:33 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:34 +0000] "GET /index.html HTTP/1.1" 404 512 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:35 +0000] "GET /robots.txt HTTP/1.1" 404 512 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:36 +0000] "HEAD /admin HTTP/1.1" 404 0 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:37 +0000] "GET / HTTP/1.0" 404 512 "-" "Nmap (https://nmap.org)"
+10.0.0.1 - - [15/Jan/2025:10:15:38 +0000] "GET / HTTP/1.1" 404 512 "-" "Nmap/7.93 (https://nmap.org)"
