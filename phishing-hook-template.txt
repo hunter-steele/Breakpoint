@@ -1,0 +1,18 @@
+# Phishing email template for Phishing Hook challenge
+# Spoofs IT support to lure credentials
+
+From: it@target.local
+To: john.doe@target.local
+Subject: Urgent: Reset Your Password
+Date: Jan 15, 2025
+
+Dear John Doe,
+
+Your webmail account requires an immediate password reset due to a security update. Click the link below to verify your credentials:
+
+http://webmail.target.local/reset
+
+Failure to comply within 24 hours may lock your account.
+
+Best,
+IT Support Team
