@@ -1,0 +1,8 @@
+# Volatility profile for Ubuntu 18.04 x64 (Memory Leak challenge)
+# Simulated profile metadata for memory dump analysis
+
+[profile]
+name = LinuxUbuntu1804x64
+kernel = vmlinuz-4.15.0-20-generic
+symbols = System.map-4.15.0-20-generic
+offset = 0xffffffff81000000
