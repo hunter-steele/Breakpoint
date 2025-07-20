@@ -1,0 +1,6 @@
+#!/bin/bash
+# Cron script for backup-task (Cron Breach challenge)
+# Runs as root every minute, world-writable for exploitation
+# File: /scripts/backup.sh
+
+tar -czf /backup/data.tar.gz /data
