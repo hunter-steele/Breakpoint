@@ -1,0 +1,27 @@
+Side Mission: Firmware Carve Map
+
+Target: router-firmware.bin
+Location: http://10.10.10.220/firmware/router-firmware.bin
+
+Objective:
+Extract the embedded SquashFS root filesystem from the firmware to locate the flag.
+
+binwalk Output:
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+94208         0x17000         Squashfs filesystem, little endian
+
+Steps:
+1. Extract using binwalk:
+   binwalk -e router-firmware.bin
+
+2. Or carve manually:
+   dd if=router-firmware.bin of=fs.img bs=1 skip=94208
+   unsquashfs fs.img
+
+3. Explore contents:
+   cd squashfs-root/etc
+   cat shadow.backup
+
+Flag:
+CTF{firmw4re_br41n_br34k}

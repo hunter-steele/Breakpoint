@@ -1,0 +1,23 @@
+Side Mission: TXT Exfil
+
+Target Domain: flag.tunnel.exfil.io
+Mechanism: DNS TXT record with base64-encoded flag
+
+Objective:
+Recover the flag hidden in a DNS TXT record by querying and decoding.
+
+Steps:
+1. Query the TXT record:
+   dig txt flag.tunnel.exfil.io +short
+
+2. Example response:
+   "Q1RGe2Ruc19jb3ZlcnRfY2hhbm5lbF9icjRrfQ=="
+
+3. Decode base64:
+   echo 'Q1RGe2Ruc19jb3ZlcnRfY2hhbm5lbF9icjRrfQ==' | base64 -d
+
+4. Output:
+   CTF{dns_covert_channel_br4k}
+
+Flag:
+CTF{dns_covert_channel_br4k}
