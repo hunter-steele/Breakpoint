@@ -1,0 +1,11 @@
+Side Mission: Pixel Drop
+
+Target File: drop.jpg
+Analysis indicates potential steganographic embedding via LSB in red channel.
+
+Tool Output:
+zsteg drop.jpg
+[red][lsb][ascii]: CTF{p1x3l_n01s3_br34k}
+
+Flag Recovered:
+CTF{p1x3l_n01s3_br34k}
