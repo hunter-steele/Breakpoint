@@ -1,0 +1,15 @@
+Side Mission: BLE Packet Stream
+
+Target: Sysadmin's Bluetooth headset (BLE)
+
+Captured output via btmon + gatttool:
+
+gatttool -b A4:C1:38:2F:4B:6C -I
+[CON][A4:C1:38:2F:4B:6C][LE]> char-read-uuid 0x2a56
+
+Response:
+Characteristic value/handle: 
+54 43 54 46 7b 62 6c 75 65 5f 61 69 72 67 61 70 5f 62 72 34 6b 7d
+
+Decoded flag:
+CTF{blue_airgap_br4k}
